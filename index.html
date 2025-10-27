@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Authentication System (Frontend Only)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #74b9ff, #0984e3);
+    }
+
+    .login-container {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      width: 320px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 24px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #0984e3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #74b9ff;
+    }
+
+    .message {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #d63031;
+      font-weight: 500;
+    }
+
+    .success {
+      color: #00b894;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Enter Username" />
+    <input type="password" id="password" placeholder="Enter Password" />
+    <button onclick="authenticate()">Login</button>
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    function authenticate() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const message = document.getElementById("message");
+
+      // Demo valid credentials
+      const validUsername = "admin";
+      const validPassword = "12345";
+
+      if (username === "" || password === "") {
+        message.textContent = "Please fill in all fields.";
+        message.classList.remove("success");
+        return;
+      }
+
+      if (username === validUsername && password === validPassword) {
+        message.textContent = "Login Successful!";
+        message.classList.add("success");
+        message.classList.remove("error");
+
+        // Simulate redirect (for demo)
+        setTimeout(() => {
+          alert("Welcome, " + username + "!");
+        }, 800);
+      } else {
+        message.textContent = "Invalid username or password.";
+        message.classList.remove("success");
+      }
+    }
+  </script>
+
+</body>
+</html>
